@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.aspectj.asm.IModelFilter;
 @Entity
 
+
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,12 +17,15 @@ public class Car {
     private String registerNumber;
     private int year;
     private double price;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner")
+    private Owner owner;
 
     public Car() {
 
     }
 
-    public Car( String make, String brand, String model, String registerNumber, int year, double price) {
+    public Car( String make, String brand, String model, String registerNumber, int year, double price, Owner owner) {
 
         this.id = id;
         this.make = make;
@@ -30,6 +34,7 @@ public class Car {
         this.registerNumber = registerNumber;
         this.year = year;
         this.price = price;
+        this.owner=owner;
     }
 
     public Long getId() {
@@ -99,5 +104,13 @@ public class Car {
                 ", year=" + year +
                 ", price=" + price +
                 '}';
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
