@@ -1,6 +1,7 @@
 package com.binary.carShow.service;
 
 import com.binary.carShow.entity.Car;
+import com.binary.carShow.entity.Owner;
 import org.springframework.http.HttpStatusCode;
 
 import java.util.List;

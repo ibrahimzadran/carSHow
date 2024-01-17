@@ -25,7 +25,7 @@ public class OwnerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Owner> getOwnerById(@PathVariable Long id){
-        return new ResponseEntity<>(ownerService.getCarById(id),HttpStatus.OK);
+        return new ResponseEntity<>(ownerService.getOwnerById(id),HttpStatus.OK);
     }
 
     @PostMapping("/add")

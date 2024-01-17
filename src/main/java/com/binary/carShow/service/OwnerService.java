@@ -9,7 +9,7 @@ import java.util.List;
 public interface OwnerService {
 
     List<Owner> getOwner();
-    Owner getCarById(Long id);
+    Owner getOwnerById(Long id);
 
     Owner addOwner(Owner owner);
 

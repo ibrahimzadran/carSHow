@@ -23,8 +23,9 @@ public class OwnerServiceImpl implements OwnerService {
         return (List<Owner>) ownerRepository.findAll();
     }
 
+
     @Override
-    public Owner getCarById(Long id) {
+    public Owner getOwnerById(Long id) {
         Optional<Owner> optionalOwner = ownerRepository.findById(id);
         if (optionalOwner.isPresent()){
             return optionalOwner.get();
@@ -33,6 +34,7 @@ public class OwnerServiceImpl implements OwnerService {
 
         }
     }
+
 
     @Override
     public Owner addOwner(Owner owner) {
@@ -46,7 +48,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public Owner updateOwnerById(Long id, Owner owner) {
-        Owner existingOwner=getCarById(id);
+        Owner existingOwner=getOwnerById(id);
         existingOwner.setFirstName(owner.getFirstName());
         existingOwner.setLastName(owner.getLastName());
          ownerRepository.save(existingOwner);
