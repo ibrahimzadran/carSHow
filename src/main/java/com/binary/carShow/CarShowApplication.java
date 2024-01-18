@@ -1,8 +1,10 @@
 package com.binary.carShow;
 import com.binary.carShow.entity.Car;
 import com.binary.carShow.entity.Owner;
+import com.binary.carShow.entity.User;
 import com.binary.carShow.repository.CarRepository;
 import com.binary.carShow.repository.OwnerRepository;
+import com.binary.carShow.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +31,9 @@ public class CarShowApplication implements CommandLineRunner {
 	private CarRepository carRepository;
 	@Autowired
 	private OwnerRepository ownerRepository;
+	@Autowired
+	private UserRepository userRepository;
+
 private static final Logger logger = LoggerFactory.getLogger(CarShowApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(CarShowApplication.class, args);
@@ -55,6 +60,10 @@ private static final Logger logger = LoggerFactory.getLogger(CarShowApplication.
 		carRepository.findAll().forEach(car -> logger.info(car.getMake()+" "+car.getBrand()));
 
 		ownerRepository.findAll().forEach(ow -> logger.info(ow.getFirstName()));
+
+		userRepository.save(new User("user","$2y$10$ANNkxt18yOqY8tY9Fz4mxeteKnUacuZr0/01BVo2JU1gbBOOqCixu","USER"));
+		userRepository.save(new User("admin","$2y$10$EzUQHougnQ/bQz3s4EU3AeGGb9FAJpWo5nTagjr2BWd4aZtosiLO.","ADMIN"));
+
 
 	}
 	// ORM - (Object Relational Mapping) is a technique that allow you tp fetch from and manipulate a database.
